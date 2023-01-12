@@ -90,8 +90,10 @@ HTML中所有文本的多个连续空格在渲染时都将视作为一个空格
 #### HTML注释
 
 在HTML中使用`<!-->`与`--?`包括起来作为注释语言
+
 ```html
 <!-- <p>here i am</p>-->
+here i am 
 ```
 
 ### 剖析HTML文档
@@ -108,3 +110,77 @@ HTML中所有文本的多个连续空格在渲染时都将视作为一个空格
   </body>
 </html>
 ```
+
+### head标签与元数据
+
+#### head标签
+
+head标签内的内容不会显示在页面之中，用于保存页面内的元数据  
+
+example：添加标题 使用`<title>`元素
+
+##### 元数据 <meta&gt;元素
+
+元数据：描述数据的数据
+
+###### 修改字符编码
+
+example：字符集使用`utf-8`编码避免出现乱码的情况
+
+```html
+<meta> charset="utf-8">
+```
+
+###### 添加作者和描述
+
+example：使用`name`和`content`属性指定元素类型与内容
+
+```html
+<meta name="author" content="Chris Mills">
+<meta name="description" content="The MDN Web Docs Learning Area aims to provide
+complete beginners to the Web with all they need to know to get
+started with developing web sites and applications.">
+```
+
+通过在head内的description能够在搜索引擎内寻找到网站
+
+###### 添加自定义图标
+
+使用`favicon`标签自定义浏览器icon
+
+```html
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+```
+
+icon放置在image文件夹下
+
+##### 使用CSS和JavaScript丰富HTML元素
+
+CSS使用&lt;link&gt;元素，Jscript使用&lt;script&gt;元素
+
+###### &lt;link&gt;
+
+通常位于文档头部，拥有两个属性`rel`与`href`
+
+```html
+<link rel="stylesheet" href="my-css-file.css">
+```
+
+`rel=stylesheet`表明这是文档的样式表
+`href`包含样式表的文件路径
+
+###### &lt;script&gt;
+
+非强制放于`head`之中，包含`src`属性指向需要加载的JavaScript文件路径，同时加上`defer`以在HTML加载完之后加载HTML
+
+```html
+<script src="my-js-file.js" defer></script>
+```
+
+##### 设定主语言
+
+使用`<html lang="zh_CN">`设置语言为中文
+
+同时也可以针对分段设置为不同的语言
+``<p>Japanese example: <span lang="ja">ご飯が熱い。</span>.</p>
+``
