@@ -182,5 +182,21 @@ CSS使用&lt;link&gt;元素，Jscript使用&lt;script&gt;元素
 使用`<html lang="zh_CN">`设置语言为中文
 
 同时也可以针对分段设置为不同的语言
-``<p>Japanese example: <span lang="ja">ご飯が熱い。</span>.</p>
-``
+``<p>Japanese example: <span lang="ja">ご飯が熱い。</span>.</p>``
+
+### 文字处理
+
+通过使用`<p>`元素标签对段落进行定义
+
+```html
+<p>这是一个段落</p>
+```
+使用“标题标签”定义标题
+
+```html
+<h1>这是一个标题</h1>
+```
+
+其中标题元素一共有六个标签，从h1到h6，分别代表不同层级的内容，需要严明各段的内容，便于阅读
+[层级演示文件](files/text-start.html)
+
