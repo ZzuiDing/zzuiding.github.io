@@ -298,3 +298,168 @@ CSS使用&lt;link&gt;元素，Jscript使用&lt;script&gt;元素
 ```
 
 #### URL与path
+
+指向文件目录的差异
+|文件路径|差异|
+|--|--|
+|指向本级目录|直接应用文件|
+|指向子目录|添加子目录前缀|
+|指向上级目录|添加`../`返回上级目录|
+
+#### 引导到文档片段
+
+在标题端使用特定的`id`值，并在链接中在尾部添加`#+文档id`
+
+#### 绝对路径与相对路径
+
+一般而言，绝对路径=绝对路径地址+相对路径
+
+##### 绝对路径
+
+绝对路径中是直接指向的路径，可以直接通过域名进行访问
+
+##### 相对路径
+
+相对路径指向不同的位置，取决于当前所在的位置
+
+##### 连接到非HTML资源
+
+下载文件:使用`download`属性
+
+```html
+<a> href="zuiding.top" download="test.txt">点击下载（非链接）
+</a>
+```
+
+电子邮件链接:使用`<a>`与`mailto:`结合
+
+```html
+<a href="mailto:zuiding024@gmail.com">发送邮件</a>
+```
+
+电子邮件也可添加详细信息，通过添加subject,c,body内容，其中使用`?`分割主URL与参数值，使用`&`分割不同参数值
+
+### 高阶文本排版
+
+#### 描述列表
+
+标记单子项目及其相关描述，通过使用`<dl>`包裹，并在每一项中都是用`<dt>`闭合，每一个描述使用`<dd>`闭合
+
+```html
+<dl>
+  <dt>内心独白</dt>
+    <dd>戏剧中，某个角色对自己的内心活动或感受进行念白表演，这些台词只面向观众，而其他角色不会听到。</dd>
+  <dt>语言独白</dt>
+    <dd>戏剧中，某个角色把自己的想法直接进行念白表演，观众和其他角色都可以听到。</dd>
+  <dt>旁白</dt>
+    <dd>戏剧中，为渲染幽默或戏剧性效果而进行的场景之外的补充注释念白，只面向观众，内容一般都是角色的感受、想法、以及一些背景信息等。</dd>
+</dl>
+```
+
+HTML会自动在其之间形缩进，使代码整洁规范
+[实例](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting#%E6%8F%8F%E8%BF%B0%E5%88%97%E8%A1%A8)
+
+#### 引用
+
+标记引用，不会被显示出来，需要通过使用JS，CSS才能够显示`cite`的内容
+
+##### 块级引用
+
+使用`blockquote`包裹表示，并在`cite`属性内用URL指向引用的资源地址
+
+```html
+<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+  <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
+  Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
+</blockquote>
+```
+
+在渲染块引用时会增加缩进所谓引用的标志
+
+##### 行内引用
+
+大体相同，使用`<q>`元素，其中将作文普通文本放入引号表示引用
+
+```html
+<p>The quote element — <code>&lt;q&gt;</code> — is <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
+for short quotations that don't require paragraph breaks.</q></p>
+```
+
+##### 缩略语
+
+使用`<abbr>`包裹一个缩写，并提供解释（包含在`title`中）
+
+example:
+
+```html
+<p>我们使用 <abbr title="超文本标记语言（Hyper text Markup Language）">HTML</abbr> 来组织网页文档。</p>
+
+<p>第 33 届<abbr title="夏季奥林匹克运动会">奥运会</abbr>将于 2024 年 8 月在法国巴黎举行。</p>
+```
+
+##### 标记联系方式
+
+使用`address`记录地址
+ex
+
+```html
+<address>
+  <p>Chris Mills, Manchester, The Grim North, UK</p>
+</address>
+or
+<address>
+  <p>Page written by <a href="../authors/chris-mills/">Chris Mills</a>.</p>
+</address>
+
+```
+
+##### 上标与下标
+
+在一些需要使用到上下标的场景中，使用`<sup>`与`<sub>`标签解决
+其中`sub`是下标，`sup`是上标
+
+```html
+<p>咖啡因的化学方程式是 C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>。</p>
+<p>如果 x<sup>2</sup> 的值为 9，那么 x 的值必为 3 或 -3。</p>
+```
+
+##### 展示计算机代码
+
+|代码标签|解释|
+|--|--|
+|`<code>`|标记计算机通用代码|
+|`<pre`|保留空白字符>|
+|`var`|标记具体变量名|
+|`<kbd>`|标记输入电脑的键盘输入（输入示例）|
+|`<samp>`|标记计算机程序的输出|
+
+##### 标记时间和日期
+
+统一事件类型，以便使用不同时间浏览形式的用户均能正确阅读时间，并且允许插入到日历之中
+使用`<time>`元素标记
+ex：
+
+```html
+<time datetime="2016-01-20">2016 年 1 月 20 日</time>
+```
+
+ex2：
+
+```html
+<!-- 标准简单日期 -->
+<time datetime="2016-01-20">20 January 2016</time>
+<!-- 只包含年份和月份-->
+<time datetime="2016-01">January 2016</time>
+<!-- 只包含月份和日期 -->
+<time datetime="01-20">20 January</time>
+<!-- 只包含时间，小时和分钟数 -->
+<time datetime="19:30">19:30</time>
+<!-- 还可包含秒和毫秒 -->
+<time datetime="19:30:01.856">19:30:01.856</time>
+<!-- 日期和时间 -->
+<time datetime="2016-01-20T19:30">7.30pm, 20 January 2016</time>
+<!-- 含有时区偏移值的日期时间 -->
+<time datetime="2016-01-20T19:30+01:00">7.30pm, 20 January 2016 is 8.30pm in France</time>
+<!-- 调用特定的周 -->
+<time datetime="2016-W04">The fourth week of 2016</time>
+```
