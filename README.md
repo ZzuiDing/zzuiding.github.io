@@ -273,3 +273,28 @@ CSS使用&lt;link&gt;元素，Jscript使用&lt;script&gt;元素
 #### 嵌套列表
 
 在一个列表之中嵌入另一个列表是同样可行的
+
+### 超链接
+
+使用超链接将文档连接到任何其他文档
+使用`<a>`元素，并给予一个`href`属性以创建链接
+
+```html
+<p>chilck
+<a href="https://www.google.com"> here </a>to jumo to Google
+</p>
+```
+
+#### title属性
+
+添加title属性氪补充链接信息，包括即将跳转的网页等信息（鼠标放置在该链接上显示的内容）
+
+#### 块级链接
+
+```html
+<a href="https://www.mozilla.org/zh-CN/">
+  <img src="mozilla-image.png" alt="链接至 Mozilla 主页的 Mozilla 标志">
+</a>
+```
+
+#### URL与path
