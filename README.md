@@ -646,3 +646,26 @@ SVG是描述矢量图形的XML语言，通过不同的元素来定义图像的�
 即：根据if语句选择对应的执行代码块
 
 #### 不同分辨率
+
+```html
+<img srcset="elva-fairy-320w.jpg, elva-fairy-480w.jpg 1.5x, elva-fairy-640w.jpg 2x"
+     src="elva-fairy-640w.jpg"
+     alt="Elva dressed as a fairy" />
+```
+
+浏览器自动选择
+
+#### 美术设计
+
+通过美术设计在恰当时显示不同尺寸的图频，通过`<picture>`实现
+
+```html
+<picture>
+  <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg" />
+  <source media="(min-width: 800px)" srcset="elva-800w.jpg" />
+  <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva" />
+</picture>
+```
+
+### 表格
+
