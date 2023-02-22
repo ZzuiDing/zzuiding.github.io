@@ -669,3 +669,18 @@ SVG是描述矢量图形的XML语言，通过不同的元素来定义图像的�
 
 ### 表格
 
+表格中内容都包含在`<table>`标签之中，其中每一个最小的内容容器（即单元格）都是通过`<td>`元素创建的
+使用`<tr>`来达成换行的目的
+[表格测试](example/table%20example1/blank-template.html)
+
+使用`<th>`添加标题（特殊单元格）
+[标题测试](example/table%20example2/dogs-table.html)
+
+通过`clospan`和`rowspan`实现跨越多行多列的单元格
+[跨越单元格测试](example/table%20example3/animals-table.html)
+
+使用`<col>`和`<colgroup>`使所有的列数据样式一致，避免单独设置
+创建`<colgroup>`容器，并在容器内添加`<col>`元素（colgroup定义在table下方）
+`col`定义方法依照每行的顺序决定，如果需要设置第二行及以后，必须在此之前添加对应的`col`空元素
+还可以通过设定`span`值，来规定样式应用到表格的列数
+[col样例测试](example/table%20example4/timetable.html)
