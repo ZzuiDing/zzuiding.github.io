@@ -593,3 +593,36 @@ SVG是描述矢量图形的XML语言，通过不同的元素来定义图像的�
 #### `<img>`引用
 
 使用`<img>`元素直接嵌入SVG图片，但是无法成JS和CSS对象
+
+#### `<svg>`引用
+
+使用`<svg></svg>`标签闭合内容，内含svg代码
+
+##### 优点
+
+1.减少加载时间
+2.允许通过CSS修改样式
+3.使用CSS交互
+4.包含`<a>`标签，成为超链接
+
+##### 缺点
+
+1.只适用于在一个地方使用，避免资源密集型维护
+2.会增加HTML文件大小
+3.不会缓存内联SVG文件
+4.因为支持过时的浏览器会增加开销成本
+
+#### `<iframe>`插入
+
+同`<iframe>`操作
+
+```html
+<iframe src="triangle.svg" width="500" height="500" sandbox>
+    <img src="triangle.png" alt="Triangle with three unequal sides" />
+</iframe>
+```
+
+### 响应式图片
+
+通过对不同用户不同分辨率的差分处理，实现不同用户均能得到良好的阅读体验
+
