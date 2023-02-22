@@ -626,3 +626,23 @@ SVG是描述矢量图形的XML语言，通过不同的元素来定义图像的�
 
 通过对不同用户不同分辨率的差分处理，实现不同用户均能得到良好的阅读体验
 
+#### 不同的尺寸
+
+##### 使用`<srcset>`和`<sizes>`属性
+
+使用以提供更多额外的资源图像和提示
+
+```html
+<img
+  srcset="elva-fairy-480w.jpg 480w, elva-fairy-800w.jpg 800w"
+  sizes="(max-width: 600px) 480px,
+         800px"
+  src="elva-fairy-800w.jpg"
+  alt="Elva dressed as a fairy" />
+```
+
+`<srcset>`：文件名+空格+固有宽度（单位：w），设置使用逗号分隔
+`<sizes>`：一个媒体条件+空格+条件为真时的表达式
+即：根据if语句选择对应的执行代码块
+
+#### 不同分辨率
