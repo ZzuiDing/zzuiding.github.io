@@ -832,3 +832,24 @@ h1 + p {
 #### 根据状态确认样式
 
 在使用`<a>`时，需要针对是否访问过进行差分区别
+ example：
+
+```css
+a:link {
+  color: pink;
+}
+
+a:visited {
+  color: green;
+}
+```
+
+#### 同时使用选择器和选择符
+
+```css
+body h1 + p .special {
+  color: yellow;
+  background-color: black;
+  padding: 5px;
+}
+```
