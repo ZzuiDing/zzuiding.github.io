@@ -725,3 +725,110 @@ SVG是描述矢量图形的XML语言，通过不同的元素来定义图像的�
 同理，使用`id`和`headers`属性结合可以创造标题和单元格之间的联系，进而规定每个单元格的所属关系
 
 ## CSS
+
+### CSS基础
+
+CSS是一种样式表语言，用于为HTML元素添加样式
+
+更改元素的默认行为：使用css添加css规则，以此修改浏览器的默认样式，达成所希望的样式
+
+![CSS结构图片](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/css-declaration-small.png)
+
+#### 选择方式
+
+##### 基础选择
+
+使用选择器达头表明修改的元素，然后添加声明，声明使用`{}`包围，并且在内部添加对应的属性和值
+
+```css
+p {     //选择器
+  color:red;    属性：值，使用冒号赋值，并在结尾添加分号
+  width:500px;
+  border:1px solid black
+}
+```
+
+##### 多重选择
+
+在选择器时可选择多个元素添加相同的样式
+
+需要使用css时，需要在html的`<head>`语句中加上
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+##### 类名选择
+
+使用类名：在html元素中定义其`class`类名，并选中类名即可，在css修改时需要在前面加上`.`以表示引用
+
+```html
+<ul>
+  <li>项目一</li>
+  <li class="special">项目二</li>
+  <li>项目 <em>三</em></li>
+</ul>
+
+```
+
+```css
+.special {
+  color: orange;
+  font-weight: bold;
+}
+```
+
+##### `special`选择
+
+除此之外，也能够通过使用`special`选择器选择特定样式进行设置
+
+```css
+li.special,
+span.special {
+  color: orange;
+  font-weight: bold;
+}
+```
+
+##### 位置选择
+
+通过对位置的差分进行选择，通过对结构的定义进行选择操作，选择标签的顺序，并且使用空格间隔
+例：选择`<li>`元素内的`<em>`元素
+
+```css
+li em{
+  color:red;
+}
+```
+
+另：使用+相连，可使用相邻选择器，选择对应元素
+
+```html
+<h1>I am a level one heading</h1>
+
+<p>This is a paragraph of text. In the text is a <span>span element</span> 
+and also a <a href="http://example.com">link</a>.</p>
+
+<p>This is the second paragraph. It contains an <em>emphasized</em> element.</p>
+
+<ul>
+    <li>Item <span>one</span></li>
+    <li>Item two</li>
+    <li>Item <em>three</em></li>
+</ul>
+```
+
+```css
+li em {
+    color: red;   //第三个列表变为红色（带有em标签）
+}
+
+h1 + p {
+    font-size: 200%;
+    color: red;   //标题后的第一个段落变为红体大字
+}
+```
+
+#### 根据状态确认样式
+
+在使用`<a>`时，需要针对是否访问过进行差分区别
