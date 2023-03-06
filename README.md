@@ -965,3 +965,53 @@ background-attachment: fixed;
 
 实际指包括实际空格、制表符和新行在内的空白部分
 在实际编辑过程中需要注意格式的问题，确保可读性与共线性
+
+### CSS运行方式
+
+1.浏览器载入html文件
+2.转换为DOM
+3.拉取html相关的资源
+4.拉取到css后进行解析，并分配到不同的选择器中，套用不同规则后应用到渲染树
+5.开始渲染
+6.网页显示
+![图片演示](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works/rendering.svg)
+
+#### 关于DOM
+
+一个 DOM 有一个树形结构，标记语言中的每一个元素、属性以及每一段文字都对应着结构树中的一个节点（Node/DOM 或 DOM node）。节点由节点本身和其他 DOM 节点的关系定义，有些节点有父节点，有些节点有兄弟节点（同级节点）。
+
+对于 DOM 的理解会很大程度上帮助你设计、调试和维护你的 CSS，因为 DOM 是你的 CSS 样式和文件内容的结合。当你使用浏览器 F12 调试的时候你需要操作 DOM 以查看使用了哪些规则。
+
+##### 解析DOM
+
+举例说明：
+
+```html
+<p>
+  Let's use:
+  <span>Cascading</span>
+  <span>Style</span>
+  <span>Sheets</span>
+</p>
+```
+
+```DOM
+P
+├─ "Let's use:"
+├─ SPAN
+|  └─ "Cascading"
+├─ SPAN
+|  └─ "Style"
+└─ SPAN
+    └─ "Sheets"
+```
+
+##### 应用CSS到DOM
+
+浏览器会解析 HTML 并创造一个 DOM，然后解析 CSS。可以看到唯一的选择器就是span元素选择器，浏览器处理规则会非常快！把同样的规则直接使用在三个`<span>`标签上，然后渲染出图像到屏幕。
+
+##### 无法解析的CSS
+
+当遇到无法解析的新CSS时，浏览器会忽略该解析，然后继续解析下一个CSS
+
+为此，可以套用多个CSS样式，在即使无法正常套用解析时，也能够使用另外的解析
