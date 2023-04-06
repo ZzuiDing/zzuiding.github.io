@@ -734,7 +734,7 @@ CSS是一种样式表语言，用于为HTML元素添加样式
 
 ![CSS结构图片](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics/css-declaration-small.png)
 
-#### 选择方式
+#### 选择器
 
 ##### 基础选择
 
@@ -794,6 +794,18 @@ p {     //选择器
 |`[attr|=value]`|`div[lang|="zh"]`|匹配属性为attr，且值初始为value，紧跟着连字符的元素|
 
 ###### 子字符串匹配选择器
+
+选择字符包含的元素选项
+|选择器|示例|描述|
+|--|--|--|
+|`[attr]^=value`|`li[class^="box-"]`|匹配带有一个名为attr的属性的元素，其值开头为value子字符串。|
+|`[attr$=value]`|`li[class$="-box"]`|匹配带有一个名为attr的属性的元素，其值结尾为value子字符串|
+|`[attr*=value]`|`li[class*="box"]`|匹配带有一个名为attr的属性的元素，其值的字符串中的任何地方，至少出现了一次value子字符串。|
+
+###### 忽略大小写匹配选择
+
+在大括号闭合前加上 `i`即可表明为忽略大小写匹配
+`li[class^="a" i]`
 
 ##### id选择
 
@@ -1009,6 +1021,60 @@ background-attachment: fixed;
 
 实际指包括实际空格、制表符和新行在内的空白部分
 在实际编辑过程中需要注意格式的问题，确保可读性与共线性
+
+### 选择
+
+见上
+[选择器](README.md#选择器)
+
+### 伪类和伪元素
+
+伪类是选择器的一种，用于选择特定状态的元素
+关键字：开头为冒号`:pseudo-calss-name`
+
+#### 简单伪类
+
+使用`:first-child`选择文章中的第一个子元素，以此降低维护难度：`article P:first-child {……}`
+同理：`:last-child`、`:only-child`、`:invalid`
+
+#### 用户行为伪类
+
+又称动态伪类，主要表现在用户与元素交互时
+如`:hover`、`focus`
+
+#### 伪元素
+
+以双冒号的形式开头，表现形式为添加额外的html元素
+`::pseudo-element-name`
+
+`::first-line`用于选择第一行字符，即使因设备不同带来的字符改变
+
+#### 结合伪类与伪元素
+
+如果只需要将第一段的第一行加粗，则将伪类和伪元素的两个选择器同时使用即可
+
+#### 生成带有`::before`和`::after`的内容
+
+有一组特殊的伪元素，用于和`content`属性连用，将内容通过css插入到文档中
+
+```css
+.class ::before {
+  content: "this is first line"
+}
+
+.class ::after {
+  content: "this is last line"
+}
+```
+
+补充：在部分屏幕阅读器中并不能识别出该添加部分，故并不能够用于添加语句文本，可以用作添加视觉性的小标记。
+
+::before和::after伪元素与content属性的共同使用，在 CSS 中被叫做“生成内容”，而且你会见到这种技术被用于完成各种任务。
+
+#### 参考节
+
+列出伪类和伪元素的列表，用作参考
+[链接](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#%E5%8F%82%E8%80%83%E8%8A%82)
 
 ### CSS运行方式
 
