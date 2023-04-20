@@ -30,6 +30,7 @@
                 </tr>
             </table>
             <input type="button" value="admit" onclick="check();">
+            <input type="button" value="clear" onclick="clear();">
         </form>
     </body>
     <script>
@@ -44,6 +45,11 @@
                 frm.age.focus();
                 return ;
             }
+        }
+        function clear(){
+            const name = frm.name.value;
+            const gender = frm.gender.value;
+            alert(typeof(name));
         }
     </script>
 </html>
