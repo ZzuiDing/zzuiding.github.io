@@ -5,7 +5,7 @@
         <title>insert info</title>
     </head>
     <body>
-        <form name="frm">
+        <!-- <form name="frm">
             <table >
                 <th colspan="4">
                     info
@@ -30,40 +30,38 @@
                 </tr>
             </table>
             <input  id="btn" type="button" value="admit" onclick="check();">
-        </form>
-        <!-- <div id="result">
+        </form> -->
+        <div id="result">
             put some text here..
         </div>
-        <input  id="btn" type="button" value="button" onclick="check()"> -->
+        <input  id="btn" type="button" value="button" onclick="check()">
     </body>
-    <script>
-        function check(){
-            var str ="hello world";
-            alert(typeof str);
-            // if(frm.name.value==""){
-            //     alert("Please enter name");
-            //     frm.name.focus();
-            //     return ;
-            // }
-            // if(frm.age.value==""){
-            //     alert("Please enter age");
-            //     frm.age.focus();
-            //     return ;
-            // }
-        }
-    </script>
     <!-- <script>
-// function check(){
-//     const xhr = new XMLHttpRequest();
-//     const btn = document.getElementById('btn');
-//     const rs = document.querySelector("#result");
-//     xhr.open('get', 'http://localhost:8000/ie');
-//     xhr.send();
-//     xhr.onreadystatechange = function() {
-//         if(xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300) {
-//             rs.innerHTML = xhr.response;
-//         }
-//     }
-} 
+        // function check(){
+        //     if(frm.name.value==""){
+        //         alert("Please enter name");
+        //         frm.name.focus();
+        //         return ;
+        //     }
+        //     if(frm.age.value==""){
+        //         alert("Please enter age");
+        //         frm.age.focus();
+        //         return ;
+        //     }
+        // }
     </script> -->
+    <script>
+function check(){
+    const xhr = new XMLHttpRequest();
+    const btn = document.getElementById('btn');
+    const rs = document.querySelector("#result");
+    xhr.open('get', 'http://localhost:8000/ie');
+    xhr.send();
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300) {
+            rs.innerHTML = xhr.response;
+        }
+    }
+} 
+    </script>
 </html>
