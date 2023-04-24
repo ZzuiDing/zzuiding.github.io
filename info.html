@@ -29,7 +29,9 @@
                     </td>
                 </tr>
             </table>
+            <input type="reset" value="reset">
             <input type="button" value="admit" onclick="check();">
+            <br>
             <input type="button" value="clear" onclick="clear();">
         </form>
     </body>
@@ -45,6 +47,7 @@
                 frm.age.focus();
                 return ;
             }
+            alert(frm.name.value);
         }
         function clear(){
             const name = frm.name.value;
