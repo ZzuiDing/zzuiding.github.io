@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=utf-8/>
-        <title>insert info</title>
-    </head>
-    <body>
-        <form name="frm">
-            <table >
-                <th colspan="4">
-                    info
-                </th>
-                <tr>
-                    <td colspan="2">
-                        请输入姓名:<input type="text" name="name" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        请输入年龄<input type="text" name="age" value=""/>
-                </tr>
-                <tr>
-                    <td>
-                        请选择性别<select name="gender">
-                            <option value="">please select a gender</option>
-                            <option value="male">男</option>
-                            <option value="female">女</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-            <input type="button" value="admit" onclick="check();">
-        </form>
-        <!-- <div id="result">
+
+<head>
+    <meta charset=utf-8 />
+    <title>insert info</title>
+</head>
+
+<style>
+    .star {
+        color: red;
+    }
+</style>
+
+<body>
+    <form name="frm">
+        <table>
+            <th colspan="4">
+                info
+            </th>
+            <tr>
+                <td colspan="2">
+                    请输入姓名:<input type="text" name="name" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    请输入年龄<input type="text" name="age" value="" />
+            </tr>
+            <tr>
+                <td>
+                    请选择性别<select name="gender">
+                        <option value="">please select a gender</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="button" value="admit" onclick="check();">
+    </form>
+    <!-- <div id="result">
             put some text here..
         </div>
         <input  id="btn" type="button" value="button" onclick="check()"> -->
-    </body>
-    <script>
-        function check(){
-            if(frm.name.value==""){
-                alert("Please enter name");
-                frm.name.focus();
-                return ;
-            }
-            if(frm.age.value==""){
-                alert("Please enter age");
-                frm.age.focus();
-                return ;
-            }
+</body>
+<script>
+    function check() {
+        if (frm.name.value == "") {
+            alert("Please enter name");
+            frm.name.focus();
+            return;
         }
-    </script>
-    <!-- <script>
+        if (frm.age.value == "") {
+            alert("Please enter age");
+            frm.age.focus();
+            return;
+        }
+    }
+</script>
+<!-- <script>
 // function check(){
 //     const xhr = new XMLHttpRequest();
 //     const btn = document.getElementById('btn');
@@ -64,4 +72,65 @@
 //     }
 } 
     </script> -->
+
+<br>
+<br>
+<br><br>
+<br><br><br>
+<form name="frm2">
+    <table>
+        <tr>
+            <th colspan="6">info list</th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                input name here:<span class="star">*</span>
+                <input type="text" name="name" id="name" placeholder="Enter Name" style="width: 200px;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                input email here:<span class="star">*</span><input type="text" name="email" id="email"
+                    placeholder="Enter Email" style="width: 200px;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="phone" id="phone" placeholder="Enter Phone" style="width: 200px;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="url" id="url" placeholder="Enter URL" style="width: 200px;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="subject" id="subject" placeholder="Enter subject" style="width: 200px;">
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" value="submit" onclick="cheak()">
+    <input type="reset" value="reset" onclick="this.form.reset();" />
+</form>
+
+
 </html>
+<script>
+    function cheak () {
+        if (frm2.name.value.length<3) {
+            alert("input name: " + frm2.name.value);
+            frm2.name.focus;
+        }
+        if(frm2.email.value.length < 8) {
+            alert("input email: " + frm2.email.value);
+            frm2.email.focus;
+        }
+        if(frm2.phone.value.length < 10) {
+            alert("input phone: " + frm2.phone.value);
+            frm2.phone.focus;
+        }
+    }
+
+</script>
