@@ -29,7 +29,7 @@
                     </td>
                 </tr>
             </table>
-            <input  id="btn" type="button" value="admit" onclick="check();">
+            <input type="button" value="admit" onclick="check();">
         </form>
         <!-- <div id="result">
             put some text here..
@@ -38,18 +38,16 @@
     </body>
     <script>
         function check(){
-            var str ="hello world";
-            alert(typeof str);
-            // if(frm.name.value==""){
-            //     alert("Please enter name");
-            //     frm.name.focus();
-            //     return ;
-            // }
-            // if(frm.age.value==""){
-            //     alert("Please enter age");
-            //     frm.age.focus();
-            //     return ;
-            // }
+            if(frm.name.value==""){
+                alert("Please enter name");
+                frm.name.focus();
+                return ;
+            }
+            if(frm.age.value==""){
+                alert("Please enter age");
+                frm.age.focus();
+                return ;
+            }
         }
     </script>
     <!-- <script>
