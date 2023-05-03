@@ -26,7 +26,31 @@
         padding: 0.2em;
         text-align: left;
       }
-    </style>
+/* 
+      链接文本的样式：使链接为橘色，被访问后变为绿色，当被 hover 时，移除链接文本的下划线。
+让容器里的第一个元素的字体大小为:150%，并且让这个元素的第一行是红色的。
+让表格中每隔一行条带化，分别给它们一个颜色为#333 的背景和一个白色前景。 */
+      a:link{
+        color: orange;
+      }
+      
+      a:visited{
+        color: green;
+      }
+      a:hover{
+        text-decoration: none;
+      }
+      .container:first-child{
+        font-size:150%;
+      }
+      .container:first-line{
+        color: red;
+      }
+      tj:nth-child(2n+1){
+        background-color: #333;
+        color: white;
+      }
+</style>
 
   </head>
 

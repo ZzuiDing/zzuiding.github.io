@@ -18,6 +18,15 @@
       h2 {
         margin: 0;
       }
+      /* 让任何直接跟随二级标题的段落颜色为红色。
+移除使用了 list 类的无序列表的子元素前面的圆点，并给他们添加一个 1px 的灰色下边框。 */
+      h2+p{
+        color: red;
+      }
+      li{
+        list-style:none;
+        border-bottom: 1px solid grey;
+      }
     </style>
 
     <style class="editable"></style>

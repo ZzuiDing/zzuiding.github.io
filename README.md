@@ -877,7 +877,7 @@ and also a <a href="http://example.com">link</a>.</p>
 ```css
 li em {
     color: red;   //第三个列表变为红色（带有em标签）
-}
+}1
 
 h1 + p {
     font-size: 200%;
