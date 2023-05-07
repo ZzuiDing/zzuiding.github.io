@@ -1182,6 +1182,78 @@ P
 
 ### 盒模型
 
+#### 块级盒子（block box）与内联盒子（inline box）
+
+block box：块级盒子，会在页面中独占一行，可以设置宽高，内边距，外边距，边框等属性
+example: `<p>`、`<div>`、`<ul>`、`<li>`、`<table>`、`<form>`
+
+inline box：内联盒子，会在页面中与其他元素共享一行，不可以设置宽高，内边距，外边距，边框等属性
+example: `<span>`、`<a>`、`<strong>`、`<em>`、`<label>`、`<input>`
+
+通过对盒子属性`display`值的控制来控制盒子的外部显示类型
+`inline-flex`与`flex`属性：可以将盒子设置为弹性盒子，可以通过`flex-direction`属性来控制盒子的排列方式，达成根据标签数量以及大小弹性变换其大小的目的
+
+通过对标签设定其display属性能够达成一定的视觉效果
+
+`display`还拥有一个特殊值 `diaplay:inline-block`，用于在内联和块之间提供一个中间状态，是一个内联块能够避免文字的重叠以及能够设置宽高，
+
+#### CSS盒模型
+
+完整的盒模型用于描述一个元素在文档布局中所占的空间，包括元素内容（`content`）、内边距（`padding`）、边框（`border`）和外边距（`margin`），包括以下几个部分：
+Content box：内容盒子，包含元素的内容，不包含内边距、边框和外边距
+Padding box：内边距盒子，包含元素的内容和内边距，不包含边框和外边距
+Border box：边框盒子，包含元素的内容、内边距和边框，不包含外边距
+Margin box：外边距盒子，包含元素的内容、内边距、边框和外边距
+![盒模型](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/box-model.png)
+
+##### 标准盒模型
+
+标准盒模型是指在标准模式下的盒模型，即`box-sizing: content-box;`，此时盒子的宽度只包含内容的宽度，不包含内边距、边框和外边距
+
+```css
+.box {
+  width: 350px;
+  height: 150px;
+  margin: 25px;
+  padding: 25px;
+  border: 5px solid black;
+}
+/* 如果使用标准模型，实际占用空间的宽高分别为：宽度 = 410px (350 + 25 + 25 + 5 + 5)，高度 = 210px (150 + 25 + 25 + 5 + 5)。 */
+```
+
+##### IE盒模型
+
+IE盒模型是指在怪异模式下的盒模型，即`box-sizing: border-box;`，此时盒子的宽度包含内容的宽度、内边距和边框，不包含外边距
+
+```css
+.box {
+  box-sizing: border-box;
+  width: 350px;
+  height: 150px;
+}
+/* 如果使用IE模型，实际占用空间的宽高分别为：宽度 = 350px，高度 = 150px。 */
+```
+
+#### 边距
+
+##### 外边距
+
+外边距是指元素与元素之间的距离，可以通过`margin`属性来设置，可以设置为正值、负值和百分比，正值表示元素与元素之间的距离，负值表示元素与元素之间重叠的部分，百分比表示元素与元素之间的距离为父元素宽度的百分比
+
+外边距折叠：当两个元素相邻时，它们之间的外边距会发生折叠，折叠后的外边距为两个元素外边距中的较大值，若其中一个元素的外边距为负值，则折叠后的外边距为两个元素外边距的和
+
+##### 边框
+
+边框是指元素的边框，可以通过`border`属性来设置，包括以下几个部分：
+`border-width`：边框宽度，可以设置为长度值、thin、medium、thick
+`border-style`：边框样式，可以设置为none、hidden、dotted、dashed、solid、double、groove、ridge、inset、outset
+`border-color`：边框颜色，可以设置为颜色值
+`border-radius`：边框圆角，可以设置为长度值、百分比
+
+##### 内边距
+
+内边距是指元素与元素内容之间的距离，可以通过`padding`属性来设置，可以设置为正值、负值和百分比，正值表示元素与元素内容之间的距离，负值表示元素与元素内容之间重叠的部分，百分比表示元素与元素内容之间的距离为元素宽度的百分比
+
 ## JavaScript
 
 Js用于在前端中储存变量值，操作文本文案，以及响应对应事件
