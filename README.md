@@ -1,5 +1,5 @@
 # Learning
-
+![View this practice page](zzuiding.github.io)
 ## HTMLearning
 
 HTML是一种超文本标记语言，用于告知浏览器组织页面，有一系列的元素构成，通过元素包围不同部分的内容使以一定的方式呈现或工作，标签能够为文字或图片添加超链接等等设置  
