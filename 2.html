@@ -1,0 +1,44 @@
+<!-- FILEPATH: /d:/CodeProject/GitCode/zzuiding.github.io/vue-table.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Table</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(person, index) in people" :key="index">
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.gender }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                people: [
+                    { name: 'Alice', age: 25, gender: 'Female' },
+                    { name: 'Bob', age: 30, gender: 'Male' },
+                    { name: 'Charlie', age: 20, gender: 'Male' },
+                    { name: 'Diana', age: 35, gender: 'Female' },
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
