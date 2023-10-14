@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +15,12 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
+
         table {
             border-collapse: collapse;
             width: 100%;
         }
+
         .sidebar {
             background-color: #d8d8d8;
             color: #000000;
@@ -26,11 +29,13 @@
             height: 100vh; */
             /* opacity: 0.6; */
         }
+
         .cont {
             flex-grow: 0;
             padding: 20px;
             text-align: center;
         }
+
         .topbar {
             background-color: #e9e9e9;
             color: red;
@@ -40,31 +45,37 @@
             text-align: center;
             opacity: 0.6;
         }
+
         .topbar a {
             /* color: red; */
             text-decoration: none;
             margin: 0 10px;
             text-align: center;
         }
+
         :current {
             color: #f00;
             text-align: center;
         }
+
         .content {
             text-align: center;
             background-color: #e9e9e9;
             opacity: 0.6;
             height: 500px;
         }
+
         .info {
             color: #000000;
         }
+
         .bidTable {
             width: 100%;
             border-collapse: collapse;
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <div class="cont">
@@ -79,8 +90,8 @@
                 </div>
                 <h1>{{ currentContent }}</h1>
             </div>
-            <div id="content1" class="content">
-                
+            <div id="content1" style="display:none;" class="content">
+
                 <h2>查看招标信息</h2>
                 <div class="info">
                     <table class="bidTable">
@@ -109,15 +120,35 @@
                                 <td>{{ item.money }}</td>
                                 <td>{{ item.time }}</td>
                                 <td>{{ item.description }}</td>
-                                <td><button @click="editItem(item.id)">修改</button><button @click="deleteItem(item.id)">删除</button></td>
+                                <td><button @click="editItem(item.id)">修改</button><button
+                                        @click="deleteItem(item.id)">删除</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div id="content2" style="display:none;" class="content">
+            <div id="content2" class="content">
                 <h2>新建招标信息</h2>
                 <p>这是内容2的部分。</p>
+                <form @submit.prevent="saveData">
+                    姓名：<input type="text" v-model="username">
+                    <br>
+                    投标类型：<input type="text" v-model="type">
+                    <br>
+                    投标公司：<input type="text" v-model="company">
+                    <br>
+                    公司地址：<input type="text" v-model="address">
+                    <br>
+                    联系方式：<input type="text" v-model="tel">
+                    <br>
+                    金额：<input type="text" v-model="money">
+                    <br>
+                    时间：<input type="text" v-model="time">
+                    <br>
+                    描述：<input type="text" v-model="description">
+                    <br>
+                    <input type="submit" value="提交">
+                </form>
             </div>
             <div id="content3" style="display:none;" class="content">
                 <h2>管理</h2>
@@ -137,14 +168,22 @@
                     { id: 3, username: '王五', type: '建筑', company: '中建', address: '北京', phone: '123456789', money: '1000', time: '2020-10-10', description: '这是一个招标信息' },
                     { id: 4, username: '赵六', type: '建筑', company: '中建', address: '北京', phone: '123456789', money: '1000', time: '2020-10-10', description: '这是一个招标信息' },
                     { id: 5, username: '张三', type: '建筑', company: '中建', address: '北京', phone: '123456789', money: '1000', time: '2020-10-10', description: '这是一个招标信息' },
-                ]
+                ],
+                username: "",
+                type: "",
+                company: "",
+                address: "",
+                tel: "",
+                money: "",
+                time: "",
+                description: "",
             },
             methods: {
                 showContent(contentId) {
-                    document.getElementById('content1').style.display='none';
-                    document.getElementById('content2').style.display='none';
-                    document.getElementById('content3').style.display='none';
-                    document.getElementById(contentId).style.display='block';
+                    document.getElementById('content1').style.display = 'none';
+                    document.getElementById('content2').style.display = 'none';
+                    document.getElementById('content3').style.display = 'none';
+                    document.getElementById(contentId).style.display = 'block';
                     this.currentContent = document.getElementById(contentId).getElementsByTagName('h2')[0].innerText;
                 },
                 editItem(id) {
@@ -153,9 +192,37 @@
                 deleteItem(id) {
                     this.info = this.info.filter(item => item.id !== id);
                     alert('删除成功');
+                },
+                saveData() {
+                    const jsonData = {
+                        id: this.info.length + 1,
+                        username: this.username,
+                        type: this.type,
+                        company: this.company,
+                        address: this.address,
+                        tel: this.tel,
+                        money: this.money,
+                        time: this.time,
+                        description: this.description
+                    };
+                    this.info.push(jsonData);
+                    // console.log(jsonData);
+                    this.username = '';
+                    this.type = '';
+                    this.company = '';
+                    this.address = '';
+                    this.tel = '';
+                    this.money = '';
+                    this.time = '';
+                    this.description = '';
+                    alert('提交成功');
+                    document.getElementById('content1').style.display = 'block';
+                    document.getElementById('content2').style.display = 'none';
                 }
             }
-        });
+        }
+        );
     </script>
 </body>
+
 </html>
