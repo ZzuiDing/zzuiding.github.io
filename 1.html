@@ -90,7 +90,7 @@
                 </div>
                 <h1>{{ currentContent }}</h1>
             </div>
-            <div id="content1" style="display:none;" class="content">
+            <div id="content1" class="content">
 
                 <h2>查看招标信息</h2>
                 <div class="info">
@@ -120,18 +120,19 @@
                                 <td>{{ item.money }}</td>
                                 <td>{{ item.time }}</td>
                                 <td>{{ item.description }}</td>
-                                <td><button @click="editItem(item.id)">修改</button><button
+                                <td><button @click="editItem(item)">修改</button><button
                                         @click="deleteItem(item.id)">删除</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div id="content2" class="content">
-                <h2>新建招标信息</h2>
+            <div id="content2" style="display:none;" class="content">
+                <h2>{{editcontent}}</h2>
                 <p>这是内容2的部分。</p>
                 <form @submit.prevent="saveData">
                     姓名：<input type="text" v-model="username">
+                    <!-- {{id}} -->
                     <br>
                     投标类型：<input type="text" v-model="type">
                     <br>
@@ -139,7 +140,7 @@
                     <br>
                     公司地址：<input type="text" v-model="address">
                     <br>
-                    联系方式：<input type="text" v-model="tel">
+                    联系方式：<input type="text" v-model="phone">
                     <br>
                     金额：<input type="text" v-model="money">
                     <br>
@@ -169,11 +170,13 @@
                     { id: 4, username: '赵六', type: '建筑', company: '中建', address: '北京', phone: '123456789', money: '1000', time: '2020-10-10', description: '这是一个招标信息' },
                     { id: 5, username: '张三', type: '建筑', company: '中建', address: '北京', phone: '123456789', money: '1000', time: '2020-10-10', description: '这是一个招标信息' },
                 ],
+                editcontent: "新增招标信息",
+                id:"",
                 username: "",
                 type: "",
                 company: "",
                 address: "",
-                tel: "",
+                phone: "",
                 money: "",
                 time: "",
                 description: "",
@@ -186,14 +189,45 @@
                     document.getElementById(contentId).style.display = 'block';
                     this.currentContent = document.getElementById(contentId).getElementsByTagName('h2')[0].innerText;
                 },
-                editItem(id) {
+                editItem(info) {
+                    this.currentContent = "修改招标信息";
+                    this.editcontent = "修改招标信息";
+                    this.id = info.id;
+                    this.username= info.username;
+                    this.type= info.type;
+                    this.company= info.company;
+                    this.address= info.address;
+                    this.phone= info.phone;
+                    this.money= info.money;
+                    this.time= info.time;
+                    this.description= info.description;
+                    // username='123';
+                    // alert(username)
+                    document.getElementById('content2').style.display = 'block';
+                    document.getElementById('content1').style.display = 'none';
+                    // this.info[id-1].username= this.username;
                     
                 },
                 deleteItem(id) {
                     this.info = this.info.filter(item => item.id !== id);
                     alert('删除成功');
                 },
-                saveData() {
+                saveData(id) {
+                    // this.id =id;
+                    if(this.id!=""){
+                        this.info[this.id-1].username= this.username;
+                        this.info[this.id-1].type= this.type;
+                        this.info[this.id-1].company= this.company;
+                        this.info[this.id-1].address= this.address;
+                        this.info[this.id-1].phone= this.phone;
+                        this.info[this.id-1].money= this.money;
+                        this.info[this.id-1].time= this.time;
+                        this.info[this.id-1].description= this.description;
+                        alert('修改成功');
+                        document.getElementById('content1').style.display = 'block';
+                        document.getElementById('content2').style.display = 'none';
+                        return;
+                    }
                     const jsonData = {
                         id: this.info.length + 1,
                         username: this.username,
@@ -204,6 +238,18 @@
                         money: this.money,
                         time: this.time,
                         description: this.description
+                    };
+                    if(this.username==''||this.type==''||this.company==''||this.address==''||this.tel==''||this.money==''||this.time==''||this.description==''){
+                        alert('请填写完整信息');
+                        return;
+                    };
+                    if(this.info.length>0){
+                        for(let i=0;i<this.info.length;i++){
+                            if(this.info[i].username==this.username){
+                                alert('该用户已存在');
+                                return;
+                            }
+                        }
                     };
                     this.info.push(jsonData);
                     // console.log(jsonData);
