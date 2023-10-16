@@ -129,7 +129,7 @@
             </div>
             <div id="content2" style="display:none;" class="content">
                 <h2>{{editcontent}}</h2>
-                <p>这是内容2的部分。</p>
+                <p>在下方填写对应的信息</p>
                 <form @submit.prevent="saveData">
                     姓名：<input type="text" v-model="username">
                     <!-- {{id}} -->
@@ -209,8 +209,10 @@
                     
                 },
                 deleteItem(id) {
-                    this.info = this.info.filter(item => item.id !== id);
-                    alert('删除成功');
+                    if(confirm("确定删除吗？")){
+                        this.info = this.info.filter(item => item.id !== id);
+                        alert('删除成功');
+                    }
                 },
                 saveData(id) {
                     // this.id =id;
@@ -234,12 +236,12 @@
                         type: this.type,
                         company: this.company,
                         address: this.address,
-                        tel: this.tel,
+                        phone: this.phone,
                         money: this.money,
                         time: this.time,
                         description: this.description
                     };
-                    if(this.username==''||this.type==''||this.company==''||this.address==''||this.tel==''||this.money==''||this.time==''||this.description==''){
+                    if(this.username==''||this.type==''||this.company==''||this.address==''||this.phone==''||this.money==''||this.time==''||this.description==''){
                         alert('请填写完整信息');
                         return;
                     };
@@ -257,7 +259,7 @@
                     this.type = '';
                     this.company = '';
                     this.address = '';
-                    this.tel = '';
+                    this.phone = '';
                     this.money = '';
                     this.time = '';
                     this.description = '';
